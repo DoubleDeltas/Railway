@@ -1,4 +1,4 @@
-package math;
+package com.doubledeltas.railway.bukkit.math;
 
 import lombok.experimental.UtilityClass;
 import org.bukkit.util.Vector;

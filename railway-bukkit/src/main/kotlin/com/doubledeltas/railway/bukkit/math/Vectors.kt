@@ -1,10 +1,7 @@
-package math
+package com.doubledeltas.railway.bukkit.math
 
+import com.doubledeltas.railway.core.math.Axis
 import org.bukkit.util.Vector
-
-enum class Axis {
-    X, Y, Z
-}
 
 operator fun Vector.get(axis: Axis) =
     when (axis) {
@@ -34,11 +31,11 @@ operator fun Vector.set(axis: Axis, value: Double) =
         Axis.Z -> this.setZ(value)
     }
 
-fun Vector.component1() = this.x
+operator fun Vector.component1() = this.x
 
-fun Vector.component2() = this.y
+operator fun Vector.component2() = this.y
 
-fun Vector.component3() = this.z
+operator fun Vector.component3() = this.z
 
 operator fun Vector.unaryPlus() = this
 

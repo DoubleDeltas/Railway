@@ -1,4 +1,4 @@
-package math;
+package com.doubledeltas.railway.bukkit.math;
 
 import org.bukkit.util.Vector;
 
