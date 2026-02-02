@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+group = 'com.doubledeltas'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
+    compileOnly("org.projectlombok:lombok:1.18.42")
+    annotationProcessor("org.projectlombok:lombok:1.18.42")
+
+    testCompileOnly("org.projectlombok:lombok:1.18.42")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+
+    compileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
+    testCompileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(8)
+}
