@@ -1,16 +1,14 @@
 package com.doubledeltas.railway.bukkit.math
 
 import com.doubledeltas.railway.core.math.Axis
-import com.doubledeltas.railway.core.math.ImmutableYawAndPitch
-import com.doubledeltas.railway.core.math.YawAndPitch
 import org.bukkit.Location
 import org.bukkit.util.Vector
 
 operator fun Location.component1() = this.world
 
-operator fun Location.component2() = VectorMath.mutableClone(this.toVector())
+operator fun Location.component2() = VectorMath.cloneOf(this.toVector())
 
-operator fun Location.component3() = YawAndPitch(this.yaw, this.pitch)
+operator fun Location.component3() = YawPitch(this.yaw, this.pitch)
 
 operator fun Location.get(axis: Axis) =
     when (axis) {
@@ -26,9 +24,9 @@ operator fun Location.set(axis: Axis, value: Double) =
         Axis.Z -> this.setZ(value)
     }
 
-fun Location.getYawAndPitch() = YawAndPitch(this.yaw, this.pitch)
+fun Location.getYawPitch() = YawPitch(this.yaw, this.pitch)
 
-fun Location.setYawAndPitch(direction: ImmutableYawAndPitch): Location {
+fun Location.setYawPitch(direction: YawPitch): Location {
     this.yaw = direction.yaw
     this.pitch = direction.pitch
     return this

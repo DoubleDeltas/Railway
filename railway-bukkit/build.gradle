@@ -18,10 +18,10 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
     compileOnly project(':railway-core')
     testCompileOnly project(':railway-core')
-
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")

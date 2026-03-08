@@ -3,6 +3,7 @@ package com.doubledeltas.railway.bukkit.math
 import com.doubledeltas.railway.core.math.Axis
 import org.bukkit.util.Vector
 
+//region Description
 operator fun Vector.get(axis: Axis) =
     when (axis) {
         Axis.X -> this.x
@@ -41,8 +42,6 @@ operator fun Vector.unaryPlus() = this
 
 operator fun Vector.unaryMinus() = Vector(-this.x, -this.y, -this.z)
 
-operator fun Vector.not() = this.lengthSquared() == 0.0
-
 operator fun Vector.plus(other: Vector) = this.clone().add(other)
 
 operator fun Vector.minus(other: Vector) = this.clone().subtract(other)
@@ -76,4 +75,5 @@ infix fun Vector.cross(other: Vector) = this.getCrossProduct(other)
 infix fun Vector.eq(other: Vector) = VectorMath.eq(this, other)
 
 infix fun Vector.neq(other: Vector) = !(this eq other)
+//endregion
 

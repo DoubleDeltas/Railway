@@ -7,6 +7,9 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 
 dependencies {
@@ -17,6 +20,8 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
 
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
+    implementation "org.joml:joml:1.10.8"
 }
 
 test {

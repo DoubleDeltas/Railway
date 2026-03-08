@@ -1,5 +1,6 @@
 package com.doubledeltas.railway.bukkit.math;
 
+import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import org.bukkit.util.Vector;
 
@@ -7,11 +8,15 @@ import java.util.Objects;
 
 @UtilityClass
 public final class VectorMath {
-    public static final ZeroVector ZERO = new ZeroVector();
-
     private static final double EPSILON = Vector.getEpsilon();
 
-    public static boolean eq(Vector v1, Vector v2) {
+    public static boolean isZero(@NonNull Vector v) {
+        return Math.abs(v.getX()) < EPSILON &&
+                Math.abs(v.getY()) < EPSILON &&
+                Math.abs(v.getZ()) < EPSILON;
+    }
+
+    public static boolean eq(@NonNull Vector v1, @NonNull Vector v2) {
         if (Objects.equals(v1, v2))
             return true;
         return Math.abs(v1.getX() - v2.getX()) < EPSILON &&
@@ -19,7 +24,7 @@ public final class VectorMath {
                 Math.abs(v1.getZ() - v2.getZ()) < EPSILON;
     }
 
-    public static boolean neq(Vector v1, Vector v2) {
+    public static boolean neq(@NonNull Vector v1, @NonNull Vector v2) {
         if (Objects.equals(v1, v2))
             return false;
         return Math.abs(v1.getX() - v2.getX()) >= EPSILON ||
@@ -27,15 +32,28 @@ public final class VectorMath {
                 Math.abs(v1.getZ() - v2.getZ()) >= EPSILON;
     }
 
-    public static Vector mutableClone(Vector vector) {
+    public static Vector cloneOf(@NonNull Vector vector) {
         return new Vector().copy(vector);
     }
 
-    public static ImmutableVector immutableClone(Vector vector) {
-        return new ImmutableVector(vector.getX(), vector.getY(), vector.getZ());
+    public static Vector normalized(@NonNull Vector vector) {
+        return cloneOf(vector).normalize();
     }
 
-    public static Vector normalized(Vector vector) {
-        return mutableClone(vector).normalize();
+    public static float getYaw(@NonNull Vector vector) {
+        if (isZero(vector))
+            return 0.0f;    // axis
+
+        return (float) Math.toDegrees(Math.atan2(-vector.getX(), vector.getZ()));
+    }
+
+    public static float getPitch(@NonNull Vector vector) {
+        double xy = Math.sqrt(vector.getX() * vector.getX() + vector.getZ() * vector.getZ());
+
+        return (float) -Math.toDegrees(Math.atan(vector.getY() / xy));
+    }
+
+    public static YawPitch getYawPitch(@NonNull Vector vector) {
+        return new YawPitch(getYaw(vector), getPitch(vector));
     }
 }
