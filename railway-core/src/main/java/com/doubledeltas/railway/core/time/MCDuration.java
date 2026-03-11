@@ -41,6 +41,10 @@ public final class MCDuration implements Comparable<MCDuration>{
     public static final MCDuration FOREVER = UnitDurationHolder.UNIT_DURATIONS.get(MCTimeUnit.FOREVER);
     // endregion
 
+    public long toTicks() {
+        return ticks;
+    }
+
     // region STATIC FACTORY METHODS
     public static MCDuration of(long ticks) {
         return new MCDuration(ticks);
@@ -57,24 +61,6 @@ public final class MCDuration implements Comparable<MCDuration>{
     public static MCDuration of(double amount, MCTimeUnit unit) {
         return new MCDuration((long) amount * unit.ticks);
     }
-    // endregion
-
-    // region Duration COMPATIBILITY
-
-    /**
-     * Convert {@link Duration} to {@code MCDuration}, based on classical 20 ticks/seconds consistency.
-     */
-    public static MCDuration from(Duration duration) {
-        return of(duration.toMillis() / 50);
-    }
-
-    /**
-     * Convert {@code MCDuration} to {@link Duration}, based on classical 20 ticks/seconds consistency.
-     */
-    public Duration toDuration() {
-        return Duration.of(ticks * 50, ChronoUnit.MILLIS);
-    }
-
     // endregion
 
     // region OPERATIONS
