@@ -41,5 +41,5 @@ class BukkitWait(
     override suspend fun invoke(
         javaDuration: java.time.Duration,
         continuation: Continuation<Unit>
-    ) = invoke(MCTimeSupport.toTicks(javaDuration), continuation)
+    ) = invoke(MCTimeSupport.toGameTime(javaDuration) as MCDuration, continuation)
 }

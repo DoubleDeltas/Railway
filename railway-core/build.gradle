@@ -21,7 +21,7 @@ dependencies {
 
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
-    implementation "org.joml:joml:1.10.8"
+    api "org.joml:joml:1.10.8"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0"
 }
 
