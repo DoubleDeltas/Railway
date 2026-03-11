@@ -10,9 +10,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/railway-bukkit" />
-            <option value="$PROJECT_DIR$/railway-bukkit/src" />
-            <option value="$PROJECT_DIR$/railway-bukkit/src/test" />
-            <option value="$PROJECT_DIR$/railway-bukkit/src/test/java" />
             <option value="$PROJECT_DIR$/railway-core" />
           </set>
         </option>

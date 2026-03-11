@@ -5,5 +5,3 @@ rootProject.name = 'Railway'
 include 'railway-core'
 include 'railway-bukkit'
 
-
-include 'railway-bukkit:src:test:java'
